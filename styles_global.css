@@ -1,6 +1,6 @@
 /* ==========================================================================
    RUDRA SARKER — PROFESSIONAL ENGINEERING & RESEARCH PORTFOLIO (v2)
-   Theme: Pure Pitch Black & Studio Luxury · High Contrast · Zero Murkiness
+   Architecture: Clean Minimalist Studio Luxury · High Contrast · Solid Palette
    ========================================================================== */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
@@ -8,10 +8,10 @@
 :root {
   /* Default: Pure Pitch Black Studio Luxury (OLED) */
   --bg-body: #000000;
-  --bg-surface: #090a0f;
+  --bg-surface: #0a0c10;
   --bg-surface-elevated: #11131a;
-  --bg-card: rgba(12, 14, 20, 0.88);
-  --bg-card-hover: #141722;
+  --bg-card: rgba(14, 16, 22, 0.95);
+  --bg-card-hover: #161922;
   --bg-subtle: rgba(255, 255, 255, 0.04);
 
   /* Hairline Borders */
@@ -54,7 +54,7 @@
   --bg-body: #050814;
   --bg-surface: #0a1024;
   --bg-surface-elevated: #111a38;
-  --bg-card: rgba(12, 19, 40, 0.88);
+  --bg-card: rgba(12, 19, 40, 0.95);
   --bg-card-hover: #142247;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-card: rgba(255, 255, 255, 0.12);
@@ -103,24 +103,6 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Clean Crisp Radial Glow at Top */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 400px;
-  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-[data-theme="light"] body::before {
-  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-}
-
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-white);
@@ -129,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
 }
 
-h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.035em; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.035em; }
 h2 { font-size: clamp(1.75rem, 3.5vw, 2.35rem); }
 h3 { font-size: clamp(1.2rem, 2.5vw, 1.45rem); }
 
@@ -169,7 +151,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   TOP NAVBAR
+   TOP NAVBAR (SHARED ACROSS ALL PAGES)
    ========================================================================== */
 .site-nav {
   position: sticky;
@@ -177,7 +159,7 @@ a:hover {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0, 0, 0, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
@@ -186,11 +168,11 @@ a:hover {
 }
 
 [data-theme="navy"] .site-nav {
-  background: rgba(5, 8, 20, 0.88);
+  background: rgba(5, 8, 20, 0.92);
 }
 
 [data-theme="light"] .site-nav {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .nav-flex {
@@ -226,7 +208,7 @@ a:hover {
 .nav-links-desktop {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.4rem;
   list-style: none;
 }
 
@@ -247,7 +229,6 @@ a:hover {
   gap: 0.6rem;
 }
 
-/* Theme Picker Dropdown / Toggle Button */
 .theme-toggle-btn {
   background: var(--bg-subtle);
   border: 1px solid var(--border-card);
@@ -297,8 +278,57 @@ a:hover {
   cursor: pointer;
 }
 
+.nav-mobile-dropdown {
+  display: none;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  background: var(--bg-surface-elevated);
+  border-bottom: 1px solid var(--border-card);
+  padding: 1.5rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+.nav-mobile-dropdown.open {
+  display: flex;
+}
+
 /* ==========================================================================
-   HERO SECTION
+   PAGE HEADERS (SUBPAGES)
+   ========================================================================== */
+.page-intro-header {
+  padding: 4rem 0 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 3.5rem;
+}
+
+.page-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.page-lead {
+  font-size: 1.12rem;
+  color: var(--text-secondary);
+  max-width: 750px;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   HERO SECTION (HOME)
    ========================================================================== */
 .hero-section {
   padding: 4.5rem 0 3.5rem;
@@ -355,14 +385,8 @@ a:hover {
   margin-bottom: 2rem;
 }
 
-.hero-summary strong {
-  color: var(--text-white);
-}
-
-.hero-summary em {
-  font-style: normal;
-  color: #6ee7b7;
-}
+.hero-summary strong { color: var(--text-white); }
+.hero-summary em { font-style: normal; color: #6ee7b7; }
 
 .hero-btn-row {
   display: flex;
@@ -372,7 +396,7 @@ a:hover {
   margin-bottom: 2.75rem;
 }
 
-/* Professional Buttons */
+/* Button Suite */
 .btn-primary-dark {
   display: inline-flex;
   align-items: center;
@@ -386,7 +410,6 @@ a:hover {
   transition: all 0.2s ease;
   border: 1px solid var(--text-white);
 }
-
 .btn-primary-dark:hover {
   opacity: 0.92;
   transform: translateY(-1px);
@@ -405,7 +428,6 @@ a:hover {
   border: 1px solid var(--border-card);
   transition: all 0.2s ease;
 }
-
 .btn-secondary-dark:hover {
   background: var(--bg-surface-elevated);
   border-color: var(--border-hover);
@@ -433,7 +455,6 @@ a:hover {
   color: var(--text-white);
   line-height: 1.2;
 }
-
 .metric-val.green { color: #34d399; }
 
 .metric-lbl {
@@ -448,16 +469,6 @@ a:hover {
 /* ==========================================================================
    INTERACTIVE 3D WEBGL HERO VIEWPORT
    ========================================================================== */
-#bg-3d-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  pointer-events: none;
-}
-
 .hero-portrait-col {
   display: flex;
   justify-content: center;
@@ -497,7 +508,6 @@ a:hover {
   color: var(--text-white);
   font-weight: 600;
 }
-
 .viewport-status .live-dot {
   width: 6px;
   height: 6px;
@@ -527,14 +537,8 @@ a:hover {
   height: 310px;
   background: #000000;
 }
-
-[data-theme="navy"] .canvas-wrap {
-  background: #050814;
-}
-
-[data-theme="light"] .canvas-wrap {
-  background: #f1f5f9;
-}
+[data-theme="navy"] .canvas-wrap { background: #050814; }
+[data-theme="light"] .canvas-wrap { background: #f1f5f9; }
 
 #interactive-3d-canvas {
   width: 100%;
@@ -542,7 +546,6 @@ a:hover {
   display: block;
   cursor: grab;
 }
-
 #interactive-3d-canvas:active {
   cursor: grabbing;
 }
@@ -587,12 +590,10 @@ a:hover {
   gap: 4px;
   transition: all 0.2s ease;
 }
-
 .shape-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-white);
 }
-
 .shape-btn.active {
   background: rgba(59, 130, 246, 0.15);
   color: var(--accent-blue);
@@ -619,7 +620,6 @@ a:hover {
   background: #000000;
   border: 1px solid var(--border-subtle);
 }
-
 .portrait-img-box img {
   width: 100%;
   height: 100%;
@@ -631,12 +631,10 @@ a:hover {
   justify-content: space-between;
   align-items: center;
 }
-
 .portrait-caption h4 {
   font-size: 1.05rem;
   margin-bottom: 2px;
 }
-
 .portrait-caption p {
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -652,7 +650,6 @@ a:hover {
   border: 1px solid var(--border-subtle);
 }
 
-/* View Switcher */
 .hero-view-switch {
   display: flex;
   justify-content: center;
@@ -671,7 +668,6 @@ a:hover {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .v-switch-btn.active {
   background: var(--text-white);
   color: var(--bg-body);
@@ -680,7 +676,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   ACADEMIC SPOTLIGHT: Q1 JOURNAL PUBLICATION
+   ACADEMIC SPOTLIGHT & PUBLICATION CARD
    ========================================================================== */
 .section-spacer {
   padding: 3rem 0;
@@ -737,7 +733,6 @@ a:hover {
   color: var(--text-secondary);
   margin-bottom: 1.25rem;
 }
-
 .pub-authors strong {
   color: var(--text-white);
   text-decoration: underline;
@@ -785,7 +780,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   SECTION HEADERS & WORK GRID
+   WORK & PROJECTS SECTION
    ========================================================================== */
 .section-title-wrap {
   margin-bottom: 2.75rem;
@@ -814,7 +809,6 @@ a:hover {
   max-width: 720px;
 }
 
-/* Filter Buttons */
 .category-filter-nav {
   display: flex;
   flex-wrap: wrap;
@@ -833,12 +827,10 @@ a:hover {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .c-filter-btn:hover {
   color: var(--text-white);
   border-color: var(--border-hover);
 }
-
 .c-filter-btn.active {
   background: var(--text-white);
   color: var(--bg-body);
@@ -846,7 +838,6 @@ a:hover {
   font-weight: 600;
 }
 
-/* Project Cards Grid */
 .work-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -865,7 +856,6 @@ a:hover {
   transform-style: preserve-3d;
   transition: transform 0.15s ease-out, border-color 0.2s ease;
 }
-
 .work-card:hover {
   border-color: var(--border-hover);
 }
@@ -931,7 +921,6 @@ a:hover {
   align-items: center;
   gap: 0.35rem;
 }
-
 .w-link:hover {
   color: var(--accent-blue-hover);
 }
@@ -954,7 +943,6 @@ a:hover {
   transform-style: preserve-3d;
   transition: transform 0.15s ease-out, border-color 0.2s ease;
 }
-
 .domain-box:hover {
   border-color: var(--border-hover);
 }
@@ -987,7 +975,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   ACADEMIC TIMELINE
+   TIMELINE
    ========================================================================== */
 .timeline-stack {
   display: flex;
@@ -1011,7 +999,7 @@ a:hover {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--accent-blue);
-  width: 110px;
+  width: 120px;
   flex-shrink: 0;
 }
 
@@ -1027,7 +1015,44 @@ a:hover {
 }
 
 /* ==========================================================================
-   EDITORIAL WRITING
+   DETAIL CARDS & CITATIONS (FOR RESEARCH & ABOUT PAGES)
+   ========================================================================== */
+.detail-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  margin-bottom: 2rem;
+}
+
+.bibtex-box {
+  background: #000000;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #a5b4fc;
+  overflow-x: auto;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+/* Grid Utilities */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   EDITORIAL WRITING & BLOG
    ========================================================================== */
 .writing-grid {
   display: grid;
@@ -1113,7 +1138,6 @@ a:hover {
   color: var(--text-secondary);
   transition: all 0.2s ease;
 }
-
 .c-social-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--border-hover);
@@ -1140,12 +1164,12 @@ a:hover {
 }
 
 /* ==========================================================================
-   FOOTER
+   FOOTER (SHARED)
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border-subtle);
   background: var(--bg-body);
-  padding: 3.5rem 0 2.5rem;
+  padding: 4rem 0 2.5rem;
   margin-top: 5rem;
 }
 
@@ -1188,7 +1212,6 @@ a:hover {
   font-size: 0.88rem;
   color: var(--text-secondary);
 }
-
 .f-col a:hover {
   color: var(--text-white);
 }
@@ -1228,21 +1251,6 @@ a:hover {
   .mobile-menu-btn {
     display: block;
   }
-  .nav-mobile-dropdown {
-    display: none;
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    background: var(--bg-surface-elevated);
-    border-bottom: 1px solid var(--border-card);
-    padding: 1.5rem;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .nav-mobile-dropdown.open {
-    display: flex;
-  }
   .timeline-entry {
     flex-direction: column;
     gap: 0.5rem;
@@ -1253,5 +1261,8 @@ a:hover {
   }
   .publication-hero-card {
     padding: 1.75rem;
+  }
+  .detail-card {
+    padding: 1.5rem;
   }
 }
