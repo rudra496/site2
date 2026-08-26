@@ -1,186 +1,138 @@
-// Modern Particle Wave Background Animation
+// Modern Neural Constellation & Ambient Mesh Particle Engine (v2)
 (function() {
   'use strict';
 
-  // Create canvas element
-  const canvas = document.createElement('canvas');
-  canvas.id = 'starfield';
-  document.body.insertBefore(canvas, document.body.firstChild);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  let canvas = document.getElementById('starfield');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.id = 'starfield';
+    document.body.insertBefore(canvas, document.body.firstChild);
+  }
 
   const ctx = canvas.getContext('2d');
   let width, height;
   let particles = [];
-  const numParticles = 100;
+  const numParticles = window.innerWidth < 768 ? 40 : 80;
   let animationId;
-  let time = 0;
+  let mouse = { x: null, y: null, radius: 120 };
 
-  // Particle class with wave motion
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseout', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
   class Particle {
-    constructor(x, y, index) {
-      this.baseX = x;
-      this.baseY = y;
-      this.x = x;
-      this.y = y;
-      this.index = index;
-      this.size = Math.random() * 2 + 1;
-      this.speedX = Math.random() * 0.5 - 0.25;
-      this.speedY = Math.random() * 0.5 - 0.25;
-      this.opacity = Math.random() * 0.5 + 0.3;
-      this.color = this.getColor();
-      this.connectionDistance = 150;
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 1.8 + 0.8;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
+      this.baseAlpha = Math.random() * 0.4 + 0.2;
+      this.color = this.pickColor();
     }
 
-    getColor() {
-      const colors = [
-        'rgba(0, 255, 255,',    // Cyan
-        'rgba(255, 0, 255,',    // Magenta
-        'rgba(138, 43, 226,',   // Blue Violet
-        'rgba(0, 191, 255,',    // Deep Sky Blue
+    pickColor() {
+      const palette = [
+        "99, 102, 241", // Indigo
+        "6, 182, 212",  // Cyan
+        "16, 185, 129", // Emerald
+        "168, 85, 247" // Purple
       ];
-      return colors[Math.floor(Math.random() * colors.length)];
+      return palette[Math.floor(Math.random() * palette.length)];
     }
 
     update() {
-      // Wave motion
-      const waveAmplitude = 30;
-      const waveFrequency = 0.001;
-      
-      this.x = this.baseX + Math.sin(time * waveFrequency + this.index * 0.1) * waveAmplitude;
-      this.y = this.baseY + Math.cos(time * waveFrequency + this.index * 0.15) * waveAmplitude;
+      this.x += this.vx;
+      this.y += this.vy;
 
-      // Drift motion
-      this.baseX += this.speedX;
-      this.baseY += this.speedY;
+      if (this.x < 0) this.x = width;
+      else if (this.x > width) this.x = 0;
 
-      // Bounce off edges
-      if (this.baseX < 0 || this.baseX > width) this.speedX *= -1;
-      if (this.baseY < 0 || this.baseY > height) this.speedY *= -1;
+      if (this.y < 0) this.y = height;
+      else if (this.y > height) this.y = 0;
 
-      // Keep within bounds
-      this.baseX = Math.max(0, Math.min(width, this.baseX));
-      this.baseY = Math.max(0, Math.min(height, this.baseY));
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= (dx / dist) * force * 2;
+          this.y -= (dy / dist) * force * 2;
+        }
+      }
     }
 
     draw() {
-      // Draw particle with glow effect
-      const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
-      gradient.addColorStop(0, `${this.color} ${this.opacity})`);
-      gradient.addColorStop(0.5, `${this.color} ${this.opacity * 0.5})`);
-      gradient.addColorStop(1, `${this.color} 0)`);
-      
-      ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.color}, ${this.baseAlpha})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = `rgba(${this.color}, 0.5)`;
       ctx.fill();
+      ctx.shadowBlur = 0;
     }
+  }
 
-    drawConnections() {
-      // Only check particles with higher index to avoid duplicate connections
-      for (let i = this.index + 1; i < particles.length; i++) {
-        const particle = particles[i];
-        const dx = this.x - particle.x;
-        const dy = this.y - particle.y;
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < numParticles; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function connect() {
+    const maxDistance = 140;
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a + 1; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < this.connectionDistance) {
-          const opacity = (1 - distance / this.connectionDistance) * 0.3;
-          
-          ctx.strokeStyle = `rgba(100, 200, 255, ${opacity})`;
-          ctx.lineWidth = 0.5;
+        if (distance < maxDistance) {
+          const opacity = (1 - distance / maxDistance) * 0.16;
           ctx.beginPath();
-          ctx.moveTo(this.x, this.y);
-          ctx.lineTo(particle.x, particle.y);
+          ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
           ctx.stroke();
         }
       }
     }
   }
 
-  // Initialize canvas size
-  function resizeCanvas() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  }
-
-  // Initialize particles in a grid pattern with randomness
-  function initParticles() {
-    particles = [];
-    const cols = Math.ceil(Math.sqrt(numParticles * (width / height)));
-    const rows = Math.ceil(numParticles / cols);
-    const spacingX = width / (cols + 1);
-    const spacingY = height / (rows + 1);
-
-    let index = 0;
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < cols; j++) {
-        if (index >= numParticles) break;
-        
-        const x = spacingX * (j + 1) + (Math.random() - 0.5) * spacingX * 0.5;
-        const y = spacingY * (i + 1) + (Math.random() - 0.5) * spacingY * 0.5;
-        
-        particles.push(new Particle(x, y, index));
-        index++;
-      }
-    }
-  }
-
-  // Animation loop
   function animate() {
-    time++;
-    
-    // Create trailing effect
-    ctx.fillStyle = 'rgba(10, 10, 26, 0.15)';
-    ctx.fillRect(0, 0, width, height);
-
-    // Update and draw particles
-    particles.forEach(particle => {
-      particle.update();
-    });
-
-    // Draw connections first (behind particles)
-    particles.forEach(particle => {
-      particle.drawConnections();
-    });
-
-    // Draw particles on top
-    particles.forEach(particle => {
-      particle.draw();
-    });
-
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+    }
+    connect();
     animationId = requestAnimationFrame(animate);
   }
 
-  // Handle window resize
-  function handleResize() {
-    resizeCanvas();
-    initParticles();
-  }
-
-  // Initialize and start animation
-  function init() {
-    resizeCanvas();
-    initParticles();
-    animate();
-
-    // Add resize listener with debounce
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(handleResize, 200);
-    });
-  }
-
-  // Start when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  window.addEventListener('resize', () => {
+    resize();
     init();
-  }
+  });
 
-  // Cleanup function (optional - for SPA navigation)
-  window.stopStarfield = function() {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-    }
-  };
+  init();
+  animate();
 })();

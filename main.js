@@ -1,132 +1,111 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // --- 1) Mobile Navigation Toggle ---
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-  const allNavLinks = document.querySelectorAll('.nav-link');
+// Rudra Sarker Portfolio v2 — Core Interaction & Filter Engine
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) Mobile Navigation Toggle
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+  const allNavLinks = document.querySelectorAll(".nav-link");
 
   if (menuToggle && navLinks) {
-    const icon = menuToggle.querySelector('i');
+    const icon = menuToggle.querySelector("i");
 
     const openMenu = () => {
-      navLinks.classList.add('active');
+      navLinks.classList.add("active");
       if (icon) {
-        icon.classList.remove('fa-bars');
-        icon.classList.remove('fa-times'); // legacy FA5
-        icon.classList.add('fa-xmark');    // FA v6
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
       }
-      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute("aria-expanded", "true");
     };
 
     const closeMenu = () => {
-      navLinks.classList.remove('active');
+      navLinks.classList.remove("active");
       if (icon) {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
       }
-      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute("aria-expanded", "false");
     };
 
-    menuToggle.addEventListener('click', () => {
-      if (navLinks.classList.contains('active')) closeMenu();
+    menuToggle.addEventListener("click", () => {
+      if (navLinks.classList.contains("active")) closeMenu();
       else openMenu();
     });
 
-    // Close on nav link click (mobile)
-    allNavLinks.forEach(link => link.addEventListener('click', closeMenu));
+    allNavLinks.forEach(link => link.addEventListener("click", closeMenu));
 
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
     });
 
-    // Close if resizing to desktop
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       if (window.innerWidth > 768) closeMenu();
     });
   }
 
-  // --- 2) Scroll Reveal Animation ---
-  const revealElements = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+  // 2) Scroll Reveal Observer
+  const revealElements = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add("visible"));
+  }
+
+  // 3) Interactive Project Category Filter
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card-v2");
+
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute("data-category") || "";
+          if (filter === "all" || category.includes(filter)) {
+            card.style.display = "flex";
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            }, 10);
+          } else {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(15px)";
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 250);
           }
         });
-      },
-      { threshold: 0.1 }
-    );
-    revealElements.forEach(el => revealObserver.observe(el));
-  } else {
-    revealElements.forEach(el => el.classList.add('visible'));
-  }
-
-  // --- 3) Feedback Form Handling (Contact page only) ---
-  const feedbackForm = document.getElementById('feedback-form');
-  const feedbackThanks = document.getElementById('feedback-thanks');
-  if (feedbackForm && feedbackThanks) {
-    feedbackForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      feedbackForm.style.display = 'none';
-      feedbackThanks.style.display = 'block';
-      setTimeout(() => feedbackForm.reset(), 500);
+      });
     });
   }
 
-  // --- 4) Theme Toggle (Auto/Light/Dark) ---
-  const root = document.documentElement;
-  const THEME_KEY = 'theme';
-  const saved = localStorage.getItem(THEME_KEY);
-  const systemPref = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  const startTheme = saved || systemPref || 'dark';
-  root.setAttribute('data-theme', startTheme);
-
-  // Inject a theme toggle into the nav
-  const navContainer = document.querySelector('.nav-container');
-  if (navContainer) {
-    const btn = document.createElement('button');
-    btn.className = 'theme-toggle';
-    btn.type = 'button';
-    btn.title = 'Toggle theme';
-    btn.setAttribute('aria-label', 'Toggle theme');
-    btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-    navContainer.appendChild(btn);
-
-    const setTheme = (mode) => {
-      root.setAttribute('data-theme', mode);
-      localStorage.setItem(THEME_KEY, mode);
-      btn.innerHTML = mode === 'light'
-        ? '<i class="fa-solid fa-sun"></i>'
-        : '<i class="fa-solid fa-moon"></i>';
-    };
-    setTheme(startTheme);
-
-    btn.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') || 'dark';
-      setTheme(current === 'light' ? 'dark' : 'light');
+  // 4) Copy Email Utility
+  window.copyEmail = function(email) {
+    navigator.clipboard.writeText(email).then(() => {
+      const toast = document.getElementById("copy-toast");
+      if (toast) {
+        toast.textContent = "Email copied to clipboard!";
+        toast.style.opacity = "1";
+        toast.style.transform = "translateY(0)";
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          toast.style.transform = "translateY(10px)";
+        }, 2500);
+      } else {
+        alert("Copied " + email + " to clipboard!");
+      }
     });
-  }
-
-  // --- 5) JSON-LD (SEO) on homepage ---
-  if (document.querySelector('canvas#bg-3d')) {
-    const ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Rudra Sarker',
-      url: 'https://rudra496.github.io/site/',
-      sameAs: [
-        'https://github.com/rudra496',
-        'https://www.linkedin.com/in/rudra-sarker-573b15296',
-        'https://www.facebook.com/rudrasarker130'
-      ],
-      jobTitle: 'Industrial Engineer, Robotics Enthusiast, Full-Stack Developer'
-    };
-    const s = document.createElement('script');
-    s.type = 'application/ld+json';
-    s.textContent = JSON.stringify(ld);
-    document.head.appendChild(s);
-  }
+  };
 });

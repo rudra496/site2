@@ -1,18 +1,18 @@
-# Rudra Sarker — Engineering Portfolio
+# Rudra Sarker — Modern Engineering Portfolio (v2.0)
 
 🚀 Official portfolio repository of Rudra Sarker
 
-[![Live Website](https://img.shields.io/badge/Live%20Website-rudra496.github.io%2Fsite-blue?style=flat-square&logo=github)](https://rudra496.github.io/site/)
+[![Live Website](https://img.shields.io/badge/Live%20Website-rudra496.github.io%2Fsite2-blue?style=flat-square&logo=github)](https://rudra496.github.io/site22/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-rudrasarker-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/rudrasarker)
 [![GitHub](https://img.shields.io/badge/GitHub-rudra496-181717?style=flat-square&logo=github)](https://github.com/rudra496)
 
-This repository hosts the source code for my personal engineering portfolio website — **[rudra496.github.io/site](https://rudra496.github.io/site/)** — showcasing projects in Robotics, IoT, Artificial Intelligence, and Web Development.
+This repository hosts the source code for my personal engineering portfolio website — **[rudra496.github.io/site](https://rudra496.github.io/site22/)** — showcasing projects in Robotics, IoT, Artificial Intelligence, and Web Development.
 
 ---
 
 ## 👨‍💻 About Me
 
-I am **[Rudra Sarker](https://rudra496.github.io/site/)**, a Robotics and IoT developer and an Industrial & Production Engineering student at Shahjalal University of Science and Technology (SUST), Bangladesh.
+I am **[Rudra Sarker](https://rudra496.github.io/site22/)**, a Robotics and IoT developer and an Industrial & Production Engineering student at Shahjalal University of Science and Technology (SUST), Bangladesh.
 
 My work focuses on building technology solutions that combine AI, automation, and engineering innovation to solve real-world problems.
 
@@ -65,27 +65,27 @@ An interactive 3D science learning platform enabling immersive STEM education th
 
 ## 📂 Portfolio Sections
 
-The portfolio website — **[rudra496.github.io/site](https://rudra496.github.io/site/)** — includes:
+The portfolio website — **[rudra496.github.io/site](https://rudra496.github.io/site22/)** — includes:
 
-- [About](https://rudra496.github.io/site/#about)
-- [Projects](https://rudra496.github.io/site/projects.html)
-- [Achievements](https://rudra496.github.io/site/achievements.html)
-- [Gallery](https://rudra496.github.io/site/gallery.html)
-- [Engineering Blog](https://rudra496.github.io/site/blog.html)
-- [Contact](https://rudra496.github.io/site/contact.html)
+- [About](https://rudra496.github.io/site22/#about)
+- [Projects](https://rudra496.github.io/site22/projects.html)
+- [Achievements](https://rudra496.github.io/site22/achievements.html)
+- [Gallery](https://rudra496.github.io/site22/gallery.html)
+- [Engineering Blog](https://rudra496.github.io/site22/blog.html)
+- [Contact](https://rudra496.github.io/site22/contact.html)
 
 ---
 
 ## 📖 Engineering Blog
 
-The portfolio includes technical articles at **[rudra496.github.io/site/blog.html](https://rudra496.github.io/site/blog.html)** on:
+The portfolio includes technical articles at **[rudra496.github.io/site/blog.html](https://rudra496.github.io/site22/blog.html)** on:
 
 - Robotics & Control Systems
 - IoT & Embedded Systems
 - Artificial Intelligence
 - Engineering Design
 
-**Example article:** [PID Controllers in Robotics](https://rudra496.github.io/site/blog/pid-controllers-robotics-magic.html)
+**Example article:** [PID Controllers in Robotics](https://rudra496.github.io/site22/blog/pid-controllers-robotics-magic.html)
 
 ---
 
@@ -93,7 +93,7 @@ The portfolio includes technical articles at **[rudra496.github.io/site/blog.htm
 
 | Platform | Link |
 |---|---|
-| 🌐 Portfolio | [rudra496.github.io/site](https://rudra496.github.io/site/) |
+| 🌐 Portfolio | [rudra496.github.io/site](https://rudra496.github.io/site22/) |
 | 💼 LinkedIn | [linkedin.com/in/rudrasarker](https://www.linkedin.com/in/rudrasarker) |
 | 🐙 GitHub | [github.com/rudra496](https://github.com/rudra496) |
 | 🐦 X / Twitter | [x.com/Rudra496](https://x.com/Rudra496) |
@@ -120,7 +120,7 @@ If you find this project interesting, consider starring the repository to suppor
 
 ---
 
-© [Rudra Sarker](https://rudra496.github.io/site/)
+© [Rudra Sarker](https://rudra496.github.io/site22/)
 
 ## Connect
 
