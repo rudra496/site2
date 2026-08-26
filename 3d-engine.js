@@ -23,7 +23,7 @@
   const bgCanvas = document.getElementById('bg-3d-canvas');
   if (bgCanvas) {
     const bgScene = new THREE.Scene();
-    bgScene.fog = new THREE.FogExp2(0x0a0b0e, 0.05);
+    bgScene.fog = new THREE.FogExp2(0x000000, 0.035);
 
     const bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
     bgCamera.position.set(0, 1.8, 6.5);
@@ -45,10 +45,10 @@
     planeGeo.translate(0, -1.8, -10);
 
     const planeMat = new THREE.MeshBasicMaterial({
-      color: 0x1e3a8a, // Deep Sapphire Slate
+      color: 0x3b82f6,
       wireframe: true,
       transparent: true,
-      opacity: 0.18
+      opacity: 0.12
     });
     const waveMesh = new THREE.Mesh(planeGeo, planeMat);
     bgScene.add(waveMesh);

@@ -1,36 +1,36 @@
 /* ==========================================================================
    RUDRA SARKER — PROFESSIONAL ENGINEERING & RESEARCH PORTFOLIO (v2)
-   Design Language: Minimalist Academic Luxury · Swiss Grid Precision · Deep Slate
+   Theme: Pure Pitch Black & Studio Luxury · High Contrast · Zero Murkiness
    ========================================================================== */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
-  /* Surface & Background */
-  --bg-body: #0a0b0e;
-  --bg-surface: #101218;
-  --bg-surface-elevated: #161922;
-  --bg-card: rgba(18, 20, 28, 0.75);
-  --bg-card-hover: #171a24;
-  --bg-subtle: rgba(255, 255, 255, 0.03);
+  /* Default: Pure Pitch Black Studio Luxury (OLED) */
+  --bg-body: #000000;
+  --bg-surface: #090a0f;
+  --bg-surface-elevated: #11131a;
+  --bg-card: rgba(12, 14, 20, 0.88);
+  --bg-card-hover: #141722;
+  --bg-subtle: rgba(255, 255, 255, 0.04);
 
   /* Hairline Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.1);
-  --border-hover: rgba(255, 255, 255, 0.2);
-  --border-accent: rgba(59, 130, 246, 0.4);
-  --border-emerald: rgba(16, 185, 129, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.28);
+  --border-accent: rgba(59, 130, 246, 0.5);
+  --border-emerald: rgba(16, 185, 129, 0.4);
 
-  /* Color Palette — Refined & Restrained */
+  /* Accent Colors */
   --accent-blue: #3b82f6;
-  --accent-blue-hover: #2563eb;
+  --accent-blue-hover: #60a5fa;
   --accent-emerald: #10b981;
-  --accent-emerald-subtle: rgba(16, 185, 129, 0.12);
+  --accent-emerald-subtle: rgba(16, 185, 129, 0.14);
   --accent-amber: #f59e0b;
 
-  /* Typography */
+  /* Typography Colors */
   --text-white: #ffffff;
-  --text-primary: #f1f5f9;
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-dim: #475569;
@@ -47,6 +47,35 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-pill: 9999px;
+}
+
+/* Deep Space Navy Theme */
+[data-theme="navy"] {
+  --bg-body: #050814;
+  --bg-surface: #0a1024;
+  --bg-surface-elevated: #111a38;
+  --bg-card: rgba(12, 19, 40, 0.88);
+  --bg-card-hover: #142247;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.12);
+}
+
+/* Minimalist Clean Light Theme */
+[data-theme="light"] {
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-subtle: rgba(0, 0, 0, 0.03);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-card: rgba(0, 0, 0, 0.09);
+  --border-hover: rgba(0, 0, 0, 0.2);
+  --text-white: #0f172a;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
 }
 
 /* Reset & Box Sizing */
@@ -71,20 +100,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Subtle Static Radial Ambient Hero Glow (Zero CPU, Clean Professional) */
+/* Clean Crisp Radial Glow at Top */
 body::before {
   content: "";
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1000px;
-  height: 480px;
-  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59, 130, 246, 0.08) 0%, rgba(10, 11, 14, 0) 70%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
+}
+
+[data-theme="light"] body::before {
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
 }
 
 /* Headings */
@@ -106,7 +140,7 @@ a {
 }
 
 a:hover {
-  color: #fff;
+  color: var(--accent-blue-hover);
 }
 
 /* Skip link */
@@ -135,7 +169,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   EXECUTIVE TOP NAVBAR
+   TOP NAVBAR
    ========================================================================== */
 .site-nav {
   position: sticky;
@@ -143,11 +177,20 @@ a:hover {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: rgba(10, 11, 14, 0.85);
+  background: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
   z-index: 1000;
+  transition: background-color 0.25s ease;
+}
+
+[data-theme="navy"] .site-nav {
+  background: rgba(5, 8, 20, 0.88);
+}
+
+[data-theme="light"] .site-nav {
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .nav-flex {
@@ -201,7 +244,27 @@ a:hover {
 .nav-cta-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
+}
+
+/* Theme Picker Dropdown / Toggle Button */
+.theme-toggle-btn {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-card);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-white);
+  border-color: var(--border-hover);
 }
 
 .btn-nav-primary {
@@ -209,7 +272,7 @@ a:hover {
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 0.95rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-subtle);
   border: 1px solid var(--border-card);
   color: var(--text-white) !important;
   font-size: 0.85rem;
@@ -219,8 +282,8 @@ a:hover {
 }
 
 .btn-nav-primary:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-hover);
 }
 
 .mobile-menu-btn {
@@ -235,7 +298,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   HERO SECTION (ELEGANT, EDITORIAL, AUTHORITATIVE)
+   HERO SECTION
    ========================================================================== */
 .hero-section {
   padding: 4.5rem 0 3.5rem;
@@ -315,18 +378,17 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.4rem;
-  background: #ffffff;
-  color: #0a0b0e !important;
+  background: var(--text-white);
+  color: var(--bg-body) !important;
   font-size: 0.92rem;
   font-weight: 600;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--text-white);
 }
 
 .btn-primary-dark:hover {
-  background: #e2e8f0;
-  border-color: #e2e8f0;
+  opacity: 0.92;
   transform: translateY(-1px);
 }
 
@@ -347,7 +409,7 @@ a:hover {
 .btn-secondary-dark:hover {
   background: var(--bg-surface-elevated);
   border-color: var(--border-hover);
-  color: #fff !important;
+  color: var(--text-white) !important;
   transform: translateY(-1px);
 }
 
@@ -383,15 +445,165 @@ a:hover {
   letter-spacing: 0.04em;
 }
 
-/* Portrait Visual */
+/* ==========================================================================
+   INTERACTIVE 3D WEBGL HERO VIEWPORT
+   ========================================================================== */
+#bg-3d-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+}
+
 .hero-portrait-col {
   display: flex;
   justify-content: center;
 }
 
+.hero-3d-viewport-box {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.hero-3d-viewport-box:hover {
+  border-color: var(--border-accent);
+}
+
+.viewport-topbar {
+  background: var(--bg-surface-elevated);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.viewport-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+.viewport-status .live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+}
+
+.viewport-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+
+.telemetry-chip {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 310px;
+  background: #000000;
+}
+
+[data-theme="navy"] .canvas-wrap {
+  background: #050814;
+}
+
+[data-theme="light"] .canvas-wrap {
+  background: #f1f5f9;
+}
+
+#interactive-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#interactive-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.canvas-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.viewport-bottom-bar {
+  background: var(--bg-surface-elevated);
+  padding: 0.65rem 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.shape-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.4rem 0.3rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.shape-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-white);
+}
+
+.shape-btn.active {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* Portrait Frame */
 .portrait-frame {
   width: 100%;
-  max-width: 340px;
+  max-width: 400px;
   background: var(--bg-surface);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
@@ -404,8 +616,8 @@ a:hover {
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 1rem;
-  background: #11131a;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #000000;
+  border: 1px solid var(--border-subtle);
 }
 
 .portrait-img-box img {
@@ -438,6 +650,33 @@ a:hover {
   padding: 2px 8px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
+}
+
+/* View Switcher */
+.hero-view-switch {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.v-switch-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.v-switch-btn.active {
+  background: var(--text-white);
+  color: var(--bg-body);
+  border-color: var(--text-white);
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -476,7 +715,7 @@ a:hover {
   background: var(--accent-emerald-subtle);
   padding: 4px 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid var(--border-emerald);
 }
 
 .pub-date {
@@ -513,13 +752,12 @@ a:hover {
   max-width: 960px;
 }
 
-/* 4-Metric Grid */
 .pub-data-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--bg-surface-elevated);
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
@@ -602,9 +840,9 @@ a:hover {
 }
 
 .c-filter-btn.active {
-  background: #ffffff;
-  color: #0a0b0e;
-  border-color: #ffffff;
+  background: var(--text-white);
+  color: var(--bg-body);
+  border-color: var(--text-white);
   font-weight: 600;
 }
 
@@ -623,12 +861,13 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, border-color 0.2s ease;
 }
 
 .work-card:hover {
   border-color: var(--border-hover);
-  transform: translateY(-3px);
 }
 
 .work-card-header {
@@ -642,7 +881,7 @@ a:hover {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent-blue);
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(59, 130, 246, 0.12);
   padding: 2px 8px;
   border-radius: var(--radius-sm);
 }
@@ -694,7 +933,7 @@ a:hover {
 }
 
 .w-link:hover {
-  color: #fff;
+  color: var(--accent-blue-hover);
 }
 
 /* ==========================================================================
@@ -711,6 +950,13 @@ a:hover {
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 1.85rem;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, border-color 0.2s ease;
+}
+
+.domain-box:hover {
+  border-color: var(--border-hover);
 }
 
 .domain-box h3 {
@@ -741,7 +987,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   ACADEMIC & INNOVATION TIMELINE
+   ACADEMIC TIMELINE
    ========================================================================== */
 .timeline-stack {
   display: flex;
@@ -781,7 +1027,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   BLOG / EDITORIAL WRITING
+   EDITORIAL WRITING
    ========================================================================== */
 .writing-grid {
   display: grid;
@@ -869,9 +1115,9 @@ a:hover {
 }
 
 .c-social-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border-color: var(--border-hover);
-  color: #fff;
+  color: var(--text-white);
 }
 
 /* Toast */
@@ -879,8 +1125,8 @@ a:hover {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: #ffffff;
-  color: #0a0b0e;
+  background: var(--text-white);
+  color: var(--bg-body);
   padding: 0.65rem 1.25rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
@@ -898,7 +1144,7 @@ a:hover {
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border-subtle);
-  background: #07080a;
+  background: var(--bg-body);
   padding: 3.5rem 0 2.5rem;
   margin-top: 5rem;
 }
@@ -944,7 +1190,7 @@ a:hover {
 }
 
 .f-col a:hover {
-  color: #fff;
+  color: var(--text-white);
 }
 
 .footer-bottom-line {
@@ -988,7 +1234,7 @@ a:hover {
     top: var(--header-height);
     left: 0;
     width: 100%;
-    background: #0e1017;
+    background: var(--bg-surface-elevated);
     border-bottom: 1px solid var(--border-card);
     padding: 1.5rem;
     flex-direction: column;
@@ -1008,196 +1254,4 @@ a:hover {
   .publication-hero-card {
     padding: 1.75rem;
   }
-}
-
-/* Legacy Subpage Support */
-.header { position: sticky; top: 0; background: rgba(10, 11, 14, 0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); z-index: 1000; }
-.nav-container { max-width: var(--container-width); margin: 0 auto; padding: 0 1.5rem; height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
-.nav-brand { font-size: 1.15rem; font-weight: 700; color: #fff; }
-.nav-links { display: flex; align-items: center; list-style: none; gap: 1rem; }
-.nav-link { font-size: 0.9rem; color: var(--text-secondary); padding: 0.4rem 0.8rem; }
-.nav-link:hover, .nav-link.active { color: #fff; }
-.card, .blog-post, .project-card { background: var(--bg-surface); border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 1.85rem; }
-.footer { border-top: 1px solid var(--border-subtle); background: #07080a; padding: 3rem 1.5rem; text-align: center; color: var(--text-muted); }
-
-/* ==========================================================================
-   ADVANCED 3D WEBGL STYLES & INTERACTIVE VIEWPORT
-   ========================================================================== */
-#bg-3d-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  pointer-events: none;
-}
-
-/* Hero 3D Viewport Box */
-.hero-3d-viewport-box {
-  width: 100%;
-  max-width: 420px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-  position: relative;
-  transition: border-color 0.3s ease;
-}
-
-.hero-3d-viewport-box:hover {
-  border-color: rgba(59, 130, 246, 0.4);
-}
-
-.viewport-topbar {
-  background: rgba(14, 16, 23, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 0.65rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-}
-
-.viewport-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-white);
-  font-weight: 600;
-}
-
-.viewport-status .live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 8px #34d399;
-}
-
-.viewport-telemetry {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-muted);
-}
-
-.telemetry-chip {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-subtle);
-  padding: 1px 6px;
-  border-radius: var(--radius-sm);
-  color: #38bdf8;
-  font-weight: 600;
-}
-
-/* Canvas Area */
-.canvas-wrap {
-  position: relative;
-  width: 100%;
-  height: 310px;
-  background: radial-gradient(circle at 50% 50%, rgba(30, 58, 138, 0.15) 0%, rgba(10, 11, 14, 0.8) 80%);
-}
-
-#interactive-3d-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  cursor: grab;
-}
-
-#interactive-3d-canvas:active {
-  cursor: grabbing;
-}
-
-.canvas-hint {
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-dim);
-  pointer-events: none;
-  background: rgba(10, 11, 14, 0.75);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-}
-
-/* Shape Switcher Tabs */
-.viewport-bottom-bar {
-  background: rgba(14, 16, 23, 0.85);
-  padding: 0.65rem 0.85rem;
-  border-top: 1px solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.shape-btn {
-  flex: 1;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 0.4rem 0.3rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  transition: all 0.2s ease;
-}
-
-.shape-btn:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.shape-btn.active {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-  border-color: rgba(59, 130, 246, 0.4);
-  font-weight: 600;
-}
-
-/* View Mode Switcher (Portrait vs 3D Model) */
-.hero-view-switch {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.v-switch-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  color: var(--text-muted);
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.v-switch-btn.active {
-  background: #ffffff;
-  color: #0a0b0e;
-  border-color: #ffffff;
-  font-weight: 600;
-}
-
-/* Card 3D Tilt Utility */
-.work-card, .publication-hero-card, .domain-box, .portrait-frame {
-  will-change: transform;
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease-out, border-color 0.2s ease;
 }
