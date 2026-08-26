@@ -1,0 +1,115 @@
+# =========================================================
+# robots.txt for Rudra Sarker Portfolio
+# https://rudra496.github.io/site/
+# =========================================================
+
+# ---------------------------------------------------------
+# Global rules for all crawlers
+# ---------------------------------------------------------
+User-agent: *
+Allow: /
+
+# Block utility pages that should not appear in search
+Disallow: /404.html
+Disallow: /thankyou.html
+Disallow: /portfolio_home.html
+
+# Prevent crawling of duplicate query URLs
+Disallow: /*?*
+
+# Allow main content directories explicitly
+Allow: /
+Allow: /projects/
+Allow: /blog/
+Allow: /gallery/
+Allow: /about.html
+Allow: /contact.html
+
+# Sitemap declaration
+Sitemap: https://rudra496.github.io/site/sitemap.xml
+Crawl-delay: 1
+
+
+# ---------------------------------------------------------
+# Google
+# ---------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+Disallow: /404.html
+Disallow: /thankyou.html
+Disallow: /portfolio_home.html
+
+
+# ---------------------------------------------------------
+# Bing
+# ---------------------------------------------------------
+User-agent: Bingbot
+Allow: /
+Disallow: /404.html
+Disallow: /thankyou.html
+
+
+# ---------------------------------------------------------
+# AI / LLM Crawlers
+# ---------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+
+# ---------------------------------------------------------
+# Other Search Crawlers
+# ---------------------------------------------------------
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+
+# ---------------------------------------------------------
+# Bad / aggressive crawlers (optional protection)
+# ---------------------------------------------------------
+User-agent: MJ12bot
+Crawl-delay: 10
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /.git/
+
+User-agent: AhrefsBot
+Crawl-delay: 5
+Disallow: /admin/
+Disallow: /.git/
+
+User-agent: SemrushBot
+Crawl-delay: 5
+Disallow: /admin/
+Disallow: /.git/
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Bytespider
+Crawl-delay: 5
+
+
+# =========================================================
+# End of file
+# =========================================================
