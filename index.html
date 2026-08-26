@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rudra Sarker | AI Engineer &amp; Published Researcher</title>
+  <title>Rudra Sarker | AI Engineer, Robotics Developer &amp; Published Researcher</title>
   <meta name="description" content="Official portfolio of Rudra Sarker — AI Engineer, Robotics Developer, and Published Researcher (Journal of Ethnopharmacology, Elsevier). Creator of Team SignTalk (Rice360 Semifinalist) and SightlineAI." />
-  <meta name="keywords" content="Rudra Sarker, AI Engineer, Robotics Developer, Published Researcher, Journal of Ethnopharmacology, Elsevier, Q1, SightlineAI, SignTalk, MindWell, SUST, Bangladesh" />
+  <meta name="keywords" content="Rudra Sarker, AI Engineer, Robotics Developer, Published Researcher, Journal of Ethnopharmacology, Elsevier, Q1, SightlineAI, SignTalk, MindWell, SUST, Bangladesh, 3D WebGL" />
   <link rel="canonical" href="https://rudra496.github.io/site2/" />
   <meta name="theme-color" content="#0a0b0e" />
   <meta name="robots" content="index, follow" />
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Rudra Sarker Portfolio" />
   <meta property="og:title" content="Rudra Sarker | AI Engineer &amp; Published Researcher" />
-  <meta property="og:description" content="AI Engineer & Published Researcher. Discover SightlineAI, SignTalk (Rice360 Semifinalist), and our newly published Q1 study in Elsevier's Journal of Ethnopharmacology." />
+  <meta property="og:description" content="Explore interactive 3D WebGL models, robotics prototypes, and our newly published Q1 study in Elsevier's Journal of Ethnopharmacology." />
   <meta property="og:url" content="https://rudra496.github.io/site2/" />
   <meta property="og:image" content="https://rudra496.github.io/site2/Profile.webp" />
 
@@ -38,6 +38,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Three.js Library for 3D WebGL -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="./styles_global.css" />
@@ -71,6 +74,9 @@
   </script>
 </head>
 <body>
+  <!-- 3D Spatial Horizon Mesh Background (Three.js WebGL) -->
+  <canvas id="bg-3d-canvas"></canvas>
+
   <!-- Accessibility Skip Link -->
   <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -119,7 +125,7 @@
 
   <main id="main-content">
     <!-- =================================================================
-         HERO SECTION (AUTHORITATIVE & CLEAN)
+         HERO SECTION WITH INTERACTIVE 3D ENGINEERING VIEWPORT
          ================================================================= -->
     <section class="hero-section">
       <div class="container hero-layout">
@@ -172,21 +178,67 @@
           </div>
         </div>
 
-        <!-- Right Portrait Frame -->
+        <!-- Right Column: Interactive 3D Viewport with Portrait Toggle -->
         <div class="hero-portrait-col">
-          <div class="portrait-frame">
-            <div class="portrait-img-box">
-              <picture>
-                <source srcset="./Profile.webp" type="image/webp" />
-                <img src="./Profile.png" alt="Rudra Sarker" loading="eager" />
-              </picture>
-            </div>
-            <div class="portrait-caption">
-              <div>
-                <h4>Rudra Sarker</h4>
-                <p>Shahjalal Univ. of Science &amp; Technology</p>
+          <div style="width: 100%; max-width: 400px;">
+            <!-- 3D WebGL Viewport Container -->
+            <div class="hero-3d-viewport-box" id="viewport-3d-container">
+              <div class="viewport-topbar">
+                <div class="viewport-status">
+                  <span class="live-dot"></span>
+                  <span>3D QUANTUM LAB</span>
+                </div>
+                <div class="viewport-telemetry">
+                  <span id="telemetry-shape" class="telemetry-chip">CORE</span>
+                  <span id="telemetry-fps" class="telemetry-chip">60 FPS</span>
+                </div>
               </div>
-              <span class="loc-tag">Sylhet, BD</span>
+
+              <div class="canvas-wrap">
+                <canvas id="interactive-3d-canvas"></canvas>
+                <div class="canvas-hint">
+                  <i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i> Drag to inspect
+                </div>
+              </div>
+
+              <div class="viewport-bottom-bar">
+                <button type="button" onclick="switch3DShape('core')" class="shape-btn active" data-shape="core">
+                  <i class="fas fa-atom" aria-hidden="true"></i> Neural Core
+                </button>
+                <button type="button" onclick="switch3DShape('torus')" class="shape-btn" data-shape="torus">
+                  <i class="fas fa-ring" aria-hidden="true"></i> Torus Knot
+                </button>
+                <button type="button" onclick="switch3DShape('lattice')" class="shape-btn" data-shape="lattice">
+                  <i class="fas fa-cubes" aria-hidden="true"></i> Lattice
+                </button>
+              </div>
+            </div>
+
+            <!-- Portrait Frame (Toggleable) -->
+            <div class="portrait-frame" id="viewport-portrait-container" style="display: none; width: 100%;">
+              <div class="portrait-img-box">
+                <picture>
+                  <source srcset="./Profile.webp" type="image/webp" />
+                  <img src="./Profile.png" alt="Rudra Sarker" loading="eager" />
+                </picture>
+              </div>
+              <div class="portrait-caption">
+                <div>
+                  <h4>Rudra Sarker</h4>
+                  <p>Shahjalal Univ. of Science &amp; Technology</p>
+                </div>
+                <span class="loc-tag">Sylhet, BD</span>
+              </div>
+            </div>
+
+            <!-- View Switcher -->
+            <div class="hero-view-switch">
+              <button type="button" id="btn-show-3d" class="v-switch-btn active" onclick="toggleHeroView('3d')">
+                <i class="fas fa-cube" aria-hidden="true"></i> 3D Interactive Model
+              </button>
+              <button type="button" id="btn-show-portrait" class="v-switch-btn" onclick="toggleHeroView('portrait')">
+                <i class="fas fa-user" aria-hidden="true"></i> Portrait Photo
+              </button>
             </div>
           </div>
         </div>
@@ -726,7 +778,31 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Master Interactive Scripts -->
+  <script defer src="./3d-engine.js"></script>
   <script defer src="./main.js"></script>
+
+  <!-- View Toggle Script -->
+  <script>
+    function toggleHeroView(view) {
+      const box3d = document.getElementById("viewport-3d-container");
+      const boxPortrait = document.getElementById("viewport-portrait-container");
+      const btn3d = document.getElementById("btn-show-3d");
+      const btnPortrait = document.getElementById("btn-show-portrait");
+
+      if (view === "3d") {
+        box3d.style.display = "block";
+        boxPortrait.style.display = "none";
+        btn3d.classList.add("active");
+        btnPortrait.classList.remove("active");
+        window.dispatchEvent(new Event("resize"));
+      } else {
+        box3d.style.display = "none";
+        boxPortrait.style.display = "block";
+        btnPortrait.classList.add("active");
+        btn3d.classList.remove("active");
+      }
+    }
+  </script>
 </body>
 </html>
