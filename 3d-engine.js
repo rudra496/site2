@@ -35,7 +35,7 @@
     labRenderer.setSize(width, height);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     labScene.add(ambientLight);
 
     const pointLight1 = new THREE.PointLight(0x3b82f6, 3.5, 20);
@@ -58,9 +58,9 @@
     // 1) Shape A: NEURAL CORE
     const icoGeo = new THREE.IcosahedronGeometry(1.4, 1);
     const icoWireMat = new THREE.MeshStandardMaterial({
-      color: 0x60a5fa,
+      color: 0x2563eb,
       wireframe: true,
-      emissive: 0x1e3a8a,
+      emissive: 0x1d4ed8,
       roughness: 0.2,
       metalness: 0.8
     });
@@ -78,12 +78,12 @@
     coreGroup.add(innerCore);
 
     const ring1Geo = new THREE.TorusGeometry(1.85, 0.025, 16, 100);
-    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x0284c7 });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
     coreGroup.add(ring1);
 
     const ring2Geo = new THREE.TorusGeometry(2.1, 0.02, 16, 100);
-    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x34d399 });
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x059669 });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.x = Math.PI / 3;
     coreGroup.add(ring2);
@@ -91,9 +91,9 @@
     // 2) Shape B: QUANTUM TORUS KNOT
     const tkGeo = new THREE.TorusKnotGeometry(1.1, 0.32, 120, 16, 2, 3);
     const tkMat = new THREE.MeshStandardMaterial({
-      color: 0x818cf8,
+      color: 0x6366f1,
       wireframe: true,
-      emissive: 0x312e81,
+      emissive: 0x4338ca,
       roughness: 0.3,
       metalness: 0.7
     });
@@ -103,7 +103,7 @@
     // 3) Shape C: ROBOTICS OCTAHEDRON LATTICE
     const octGeo = new THREE.OctahedronGeometry(1.6, 2);
     const octMat = new THREE.MeshStandardMaterial({
-      color: 0x34d399,
+      color: 0x059669,
       wireframe: true,
       emissive: 0x064e3b,
       roughness: 0.3,
@@ -112,7 +112,7 @@
     const octMesh = new THREE.Mesh(octGeo, octMat);
     latticeGroup.add(octMesh);
 
-    const octPointsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.06 });
+    const octPointsMat = new THREE.PointsMaterial({ color: 0x0f172a, size: 0.06 });
     const octPoints = new THREE.Points(octGeo, octPointsMat);
     latticeGroup.add(octPoints);
 
@@ -127,8 +127,8 @@
     }
     pGeo.setAttribute('position', new THREE.BufferAttribute(pCoords, 3));
     const pMat = new THREE.PointsMaterial({
-      color: 0x60a5fa,
-      size: 0.035,
+      color: 0x3b82f6,
+      size: 0.04,
       transparent: true,
       opacity: 0.75
     });

@@ -1,37 +1,7 @@
-// Rudra Sarker Portfolio v2 — Clean Executive Engine with Theme Switcher
+// Rudra Sarker Portfolio v2 — Clean Professional Light Theme
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Theme Management (OLED Black, Space Navy, Clean Light)
-  const themes = ["oled", "navy", "light"];
-  const themeLabels = { oled: "OLED", navy: "Navy", light: "Light" };
-  const themeIcons = { oled: "fa-moon", navy: "fa-compass", light: "fa-sun" };
 
-  let currentTheme = localStorage.getItem("rudra_portfolio_theme") || "oled";
-  applyTheme(currentTheme);
-
-  window.cycleTheme = function() {
-    let nextIdx = (themes.indexOf(currentTheme) + 1) % themes.length;
-    currentTheme = themes[nextIdx];
-    localStorage.setItem("rudra_portfolio_theme", currentTheme);
-    applyTheme(currentTheme);
-  };
-
-  function applyTheme(theme) {
-    if (theme === "oled") {
-      document.documentElement.removeAttribute("data-theme");
-    } else {
-      document.documentElement.setAttribute("data-theme", theme);
-    }
-
-    const label = document.getElementById("theme-name-label");
-    const icon = document.getElementById("theme-icon");
-    if (label) label.textContent = themeLabels[theme];
-    if (icon) icon.className = "fas " + themeIcons[theme];
-
-    // Dispatch event so 3D engine can sync if needed
-    window.dispatchEvent(new CustomEvent("themechange", { detail: { theme } }));
-  }
-
-  // 2. Mobile Menu Navigation
+  // 1. Mobile Menu Navigation
   const menuBtn = document.getElementById("mobile-menu-btn");
   const mobileDropdown = document.getElementById("mobile-dropdown");
   const mobileLinks = document.querySelectorAll(".mobile-nav-link");
@@ -58,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Project Category Filter
+  // 2. Project Category Filter
   const filterBtns = document.querySelectorAll(".c-filter-btn");
   const workCards = document.querySelectorAll(".work-card");
 
@@ -82,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 4. One-Click Copy Email
+  // 3. One-Click Copy Email
   window.copyEmail = function(email) {
     navigator.clipboard.writeText(email).then(() => {
       const toast = document.getElementById("copy-toast");
