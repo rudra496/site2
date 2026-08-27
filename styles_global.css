@@ -1342,3 +1342,43 @@ a:hover {
   object-fit: cover;
   display: block;
 }
+
+/* ==========================================================================
+   SCIENTIFIC RESEARCH FIGURES & CHARTS
+   ========================================================================== */
+.research-figure-card {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.research-figure-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.research-figure-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  display: block;
+  background: #f8fafc;
+}
+
+.research-figure-caption {
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.research-figure-caption strong {
+  color: var(--text-white);
+  font-weight: 700;
+}
