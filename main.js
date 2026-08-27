@@ -63,10 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------------------
   // 3. Project Category Filter
   // ------------------------------------------------------------------------
+  // Category Filter for Projects and Blog
   const filterBtns = document.querySelectorAll(".c-filter-btn");
-  const workCards = document.querySelectorAll(".work-card");
+  const filterableCards = document.querySelectorAll(".work-card, .blog-card");
 
-  if (filterBtns.length > 0 && workCards.length > 0) {
+  if (filterBtns.length > 0 && filterableCards.length > 0) {
     filterBtns.forEach(btn => {
       btn.addEventListener("click", () => {
         filterBtns.forEach(b => b.classList.remove("active"));
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const targetCat = btn.getAttribute("data-category");
 
-        workCards.forEach(card => {
+        filterableCards.forEach(card => {
           const cardCat = card.getAttribute("data-cat") || "";
           if (targetCat === "all" || cardCat.includes(targetCat)) {
             card.style.display = "flex";
