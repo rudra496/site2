@@ -1,6 +1,6 @@
 # =========================================================
 # robots.txt for Rudra Sarker Portfolio
-# https://rudra496.github.io/site/
+# https://rudra496.github.io/site2/
 # =========================================================
 
 # ---------------------------------------------------------
@@ -22,11 +22,13 @@ Allow: /
 Allow: /projects/
 Allow: /blog/
 Allow: /gallery/
+Allow: /research.html
+Allow: /achievements.html
 Allow: /about.html
 Allow: /contact.html
 
 # Sitemap declaration
-Sitemap: https://rudra496.github.io/site/sitemap.xml
+Sitemap: https://rudra496.github.io/site2/sitemap.xml
 Crawl-delay: 1
 
 

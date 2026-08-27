@@ -21,7 +21,7 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Styles -->
@@ -106,8 +106,10 @@
           <div class="portrait-frame">
             <div class="portrait-img-box">
               <picture>
+                <source srcset="./Profile.jpg" type="image/jpeg" />
                 <source srcset="./Profile.webp" type="image/webp" />
-                <img src="./Profile.png" alt="Rudra Sarker" loading="eager" />
+                <source srcset="./Profile.png" type="image/png" />
+                <img src="./Profile.jpg" alt="Rudra Sarker" loading="eager" />
               </picture>
             </div>
             <div class="portrait-caption">
@@ -130,7 +132,7 @@
               <h3 style="font-size: 1.35rem; color: var(--text-white);">Shahjalal University of Science and Technology (SUST)</h3>
               <p style="color: var(--accent-blue); font-weight: 500;">Bachelor of Science in Industrial &amp; Production Engineering (IPE)</p>
             </div>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">2023 – Present · Sylhet, Bangladesh</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Undergraduate Student · SUST, Sylhet</span>
           </div>
           <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
             Rigorous multidisciplinary curriculum integrating operations research, stochastic systems modeling, statistical process control (SPC), ergonomics, lean manufacturing, and computer-integrated manufacturing.

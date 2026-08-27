@@ -21,7 +21,7 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Styles -->
@@ -205,73 +205,186 @@
         </div>
       </section>
 
-      <!-- Ongoing Research & Working Studies -->
+      <!-- Industrial Systems & Decarbonization Research -->
       <section style="margin-bottom: 4rem;">
-        <h2 style="font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--text-white);">Industrial Systems &amp; Decarbonization Research</h2>
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-white);">Industrial Systems &amp; Decarbonization Research</h2>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem;">
+          Coupling first-principles metallurgical thermodynamics with explainable AI across 31,879 production heats to drive industrial energy efficiency and carbon abatement.
+        </p>
 
-        <div class="grid-2">
-          <!-- Steel study -->
-          <div class="detail-card">
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase;">Industrial Engineering &amp; AI</span>
-            <h3 style="font-size: 1.3rem; margin: 0.5rem 0 0.75rem; color: var(--text-white);">Coupled Thermodynamic Modeling &amp; Explainable ML in Electric Arc Furnace Steelmaking</h3>
-            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
-              Analyzed a production dataset of <strong>31,879 heats at Plant Alpha</strong>. Combined first-principles metallurgical thermodynamics with gradient-boosted trees and SHAP values to optimize oxygen and carbon injection, achieving -4.8% specific power consumption, -6.2 kg/heat FeSi trimming, and 91.4% first-time carbon-temperature endpoint hit rate.
-            </p>
+        <!-- Steel study master card -->
+        <div class="detail-card" style="margin-bottom: 2.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-blue); text-transform: uppercase;">
+              <i class="fas fa-industry" aria-hidden="true"></i> Heavy Industry Decarbonization · Q1 Submission Package
+            </span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600; background: var(--accent-emerald-subtle); padding: 2px 8px; border-radius: var(--radius-pill); border: 1px solid var(--border-emerald);">
+              ● 31,879 Industrial Heats Analyzed
+            </span>
+          </div>
 
-            <div style="margin-top: 1.25rem;">
-              <figure class="research-figure-card" style="margin-bottom: 0;">
-                <img src="./figures/fig_enthalpy_sankey.png" alt="Figure: Enthalpy Sankey Flow & Thermal Balance in EAF Steelmaking" loading="lazy" />
-                <figcaption class="research-figure-caption">
-                  <strong>Thermal Sankey Balance:</strong> Energy distribution and sensible heat capture across 31,879 production heats.
-                </figcaption>
-              </figure>
+          <h3 style="font-size: 1.4rem; color: var(--text-white); margin-bottom: 0.75rem;">
+            Coupled Thermodynamic Modeling and Explainable Machine Learning for Energy Decarbonization and Solidification Quality in Industrial Induction Furnace Steelmaking
+          </h3>
+
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1rem; font-family: var(--font-mono);">
+            Author: <strong>Rudra Sarker</strong> (Department of Chemical Engineering and Polymer Science / IPE, SUST)
+          </p>
+
+          <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem;">
+            A comprehensive 7-year longitudinal investigation of Plant Alpha (500,000 MT/year South Asian Integrated IF-LRF-CCM Complex). By coupling fundamental enthalpy balances with extreme gradient boosting (XGBoost) and Tree-SHAP attributions, the model resolves a -9.54% reduction in Specific Energy Consumption (-67.30 kWh/MT), increases metallic yield from 94.68% to 96.02%, and cuts billet solidification defects from 1.84% to 0.42% (-77.17% relative reduction), abating 23,280 MT of CO₂ equivalent annually.
+          </p>
+
+          <!-- Metrics row -->
+          <div class="pub-data-grid" style="margin-bottom: 2rem;">
+            <div class="pub-data-item">
+              <h5>-9.54%</h5>
+              <p>SEC Energy Reduction (-67.3 kWh/MT)</p>
             </div>
-
-            <div class="tech-tag-row" style="margin-top: 1rem;">
-              <span class="t-tag">Thermodynamics</span>
-              <span class="t-tag">SHAP</span>
-              <span class="t-tag">Decarbonization</span>
-              <span class="t-tag">Python</span>
+            <div class="pub-data-item">
+              <h5>96.02%</h5>
+              <p>Metallic Yield (up from 94.68%)</p>
+            </div>
+            <div class="pub-data-item">
+              <h5>-77.2%</h5>
+              <p>Billet Solidification Defect Drop</p>
+            </div>
+            <div class="pub-data-item">
+              <h5>$3.51M</h5>
+              <p>Annual Net EBITDA Savings</p>
             </div>
           </div>
 
-          <!-- Assistive Health Tech -->
-          <div class="detail-card">
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #fbbf24; text-transform: uppercase;">Assistive Health Tech · Rice360</span>
-            <h3 style="font-size: 1.3rem; margin: 0.5rem 0 0.75rem; color: var(--text-white);">Embedded Sensor Fusion for Real-Time Sign Language to Speech Translation</h3>
-            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
-              Design and validation of a low-cost, 9-DoF sensory smart glove integrating five piezoresistive bend sensors and an MPU-6050 6-axis IMU. Implemented lightweight edge gesture classification with 94.2% accuracy across 30 standard Bengali sign phrases. Recognized as global semifinalists at the Rice360 Global Health Tech Design Competition.
-            </p>
-            <div class="tech-tag-row">
-              <span class="t-tag">Sensor Fusion</span>
-              <span class="t-tag">Rice360</span>
-              <span class="t-tag">Edge ML</span>
-              <span class="t-tag">Assistive Tech</span>
-            </div>
+          <!-- All 4 Figures Grid for Steel Study -->
+          <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem;">
+            <i class="fas fa-chart-pie" aria-hidden="true" style="color: var(--accent-blue);"></i> Metallurgical Thermodynamics &amp; Telemetry Figures
+          </h4>
+
+          <div class="grid-2">
+            <!-- Figure 5: Sankey -->
+            <figure class="research-figure-card">
+              <img src="./figures/fig_enthalpy_sankey.png" alt="Figure 5: Enthalpy Sankey Flow & Thermal Balance across 31,879 Heats" loading="lazy" />
+              <figcaption class="research-figure-caption">
+                <strong>Figure 5:</strong> First-Principles Enthalpy Sankey Diagram detailing sensible heat capture and thermal dissipation balances across 31,879 production heats.
+              </figcaption>
+            </figure>
+
+            <!-- Figure 6: Correlation Matrix -->
+            <figure class="research-figure-card">
+              <img src="./figures/fig_correlation_matrix.png" alt="Figure 6: Multi-Variable Metallurgical Chemistry Correlation Matrix" loading="lazy" />
+              <figcaption class="research-figure-caption">
+                <strong>Figure 6:</strong> Pearson Correlation Matrix of slag basicity (B2), dissolved oxygen activity, tap duration, and power consumption.
+              </figcaption>
+            </figure>
+
+            <!-- Figure 7: Telemetry Ramp -->
+            <figure class="research-figure-card">
+              <img src="./figures/fig_telemetry_ramp.png" alt="Figure 7: Induction Furnace Power Ramp & Specific Energy Dynamics" loading="lazy" />
+              <figcaption class="research-figure-caption">
+                <strong>Figure 7:</strong> Real-time production telemetry showing power ramp kinetics and tapping temperature stabilization.
+              </figcaption>
+            </figure>
+
+            <!-- Figure 8: ML Parity Validation -->
+            <figure class="research-figure-card">
+              <img src="./figures/fig_ml_parity.png" alt="Figure 8: XGBoost SEC R2=0.958 and Yield Strength Parity Validation" loading="lazy" />
+              <figcaption class="research-figure-caption">
+                <strong>Figure 8:</strong> Multi-Model Parity Validation on independent holdout dataset (N = 6,376) demonstrating R² = 0.958 for SEC and R² = 0.924 for Yield Strength.
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="tech-tag-row" style="margin-top: 1rem;">
+            <span class="t-tag">Thermodynamics</span>
+            <span class="t-tag">Extreme Gradient Boosting (XGBoost)</span>
+            <span class="t-tag">Tree-SHAP</span>
+            <span class="t-tag">NSGA-II Multi-Objective</span>
+            <span class="t-tag">Industrial Decarbonization</span>
+            <span class="t-tag">Lean Six Sigma DMAIC</span>
+          </div>
+        </div>
+
+        <!-- Assistive Robotics Research -->
+        <div class="detail-card">
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #d97706; text-transform: uppercase;">
+            <i class="fas fa-microchip" aria-hidden="true"></i> Assistive Healthcare Hardware · Global Health Tech Semifinalist (Rice360)
+          </span>
+
+          <h3 style="font-size: 1.35rem; color: var(--text-white); margin: 0.75rem 0;">
+            Sensory Smart Glove &amp; Vision-Language Eyewear for Inclusive Communication
+          </h3>
+
+          <p style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem;">
+            Designing wearable sensory kinematics that decode physical motion into spoken language and spatial navigation. Team SignTalk combines five bidirectional piezoresistive flex sensors and a 6-axis MPU-6050 IMU into a lightweight glove architecture, running edge ML gesture inference in &lt;50ms. SightlineAI couples dual stereoscopic sensors with bone-conduction spatial audio feedback to provide real-time obstacle segmentation.
+          </p>
+
+          <div class="grid-2">
+            <figure class="research-figure-card">
+              <img src="./project1.gif" alt="Figure 9: Team SignTalk Smart Glove Hardware Prototype in Real-Time Operation" loading="lazy" />
+              <figcaption class="research-figure-caption">
+                <strong>Figure 9:</strong> Team SignTalk 9-DoF Smart Glove capturing finger flexure angles and palm kinematics for real-time speech translation.
+              </figcaption>
+            </figure>
+
+            <figure class="research-figure-card">
+              <img src="./project3.gif" alt="Figure 10: SightlineAI Assistive Smart Eyewear Hardware Prototype" loading="lazy" />
+              <figcaption class="research-figure-caption">
+                <strong>Figure 10:</strong> SightlineAI spatial obstacle perception glasses with low-latency edge computer vision navigation.
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      <!-- Academic Identifiers -->
-      <section>
+            <!-- Academic & Professional Verification Hub -->
+      <section style="margin-bottom: 4rem;">
         <div class="contact-card-box">
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-white);">Academic Profiles &amp; Verification</h3>
-          <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
-            Connect with me across scholarly platforms and repositories to explore citations, preprint manuscripts, and open datasets.
+          <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--text-white);">Academic Profiles, Identifiers &amp; Community Repositories</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Direct links to verified researcher databases, preprint repositories, competitive hackathons, and technical developer communities.
           </p>
+
           <div class="contact-social-row">
             <a href="https://orcid.org/0009-0001-4545-0932" target="_blank" rel="noopener noreferrer" class="c-social-btn">
-              <i class="fab fa-orcid" aria-hidden="true" style="color: #a6ce39;"></i> ORCID: 0009-0001-4545-0932
+              <i class="fab fa-orcid" style="color: #a6ce39;"></i> ORCID: 0009-0001-4545-0932
             </a>
             <a href="https://www.researchgate.net/profile/Rudra-Sarker-3" target="_blank" rel="noopener noreferrer" class="c-social-btn">
-              <i class="fab fa-researchgate" aria-hidden="true"></i> ResearchGate Profile
+              <i class="fab fa-researchgate" style="color: #00ccbb;"></i> ResearchGate Profile
+            </a>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42636558/" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fas fa-file-medical" style="color: #2563eb;"></i> PubMed (PMID: 42636558)
+            </a>
+            <a href="https://doi.org/10.1016/j.jep.2026.122316" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fas fa-scroll" style="color: #ea580c;"></i> ScienceDirect (Elsevier DOI)
+            </a>
+            <a href="https://www.skills.google/public_profiles/ef0923da-68a6-4eee-97ad-6e2a37650e9d" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fab fa-google" style="color: #4285f4;"></i> Google Skills Profile
+            </a>
+            <a href="https://www.credly.com/users/rudra-sarker-ai-engineer" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fas fa-certificate" style="color: #ff6f00;"></i> Credly AI Engineer Badge
             </a>
             <a href="https://github.com/rudra496" target="_blank" rel="noopener noreferrer" class="c-social-btn">
-              <i class="fab fa-github" aria-hidden="true"></i> GitHub Research Code
+              <i class="fab fa-github"></i> GitHub (@rudra496)
+            </a>
+            <a href="https://www.linkedin.com/in/rudrasarker" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fab fa-linkedin" style="color: #0a66c2;"></i> LinkedIn Profile
+            </a>
+            <a href="https://devpost.com/rudrasarker" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fas fa-code" style="color: #003e54;"></i> DevPost Portfolio
+            </a>
+            <a href="https://dev.to/rudra_sarker" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fab fa-dev"></i> DEV.to Articles
+            </a>
+            <a href="https://projects.learning-planet.org/profile/rudra-sarker/summary" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fas fa-globe" style="color: #10b981;"></i> Learning Planet Institute
+            </a>
+            <a href="https://x.com/Rudra496" target="_blank" rel="noopener noreferrer" class="c-social-btn">
+              <i class="fab fa-x-twitter"></i> X (@Rudra496)
             </a>
           </div>
         </div>
       </section>
+
     </div>
   </main>
 
