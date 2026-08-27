@@ -180,11 +180,34 @@
           </div>
         </div>
 
-        <!-- Right Column: Interactive 3D Viewport with Portrait Toggle -->
+        <!-- Right Column: Prominent Portrait Photo of Rudra Sarker + 3D Lab Toggle -->
         <div class="hero-portrait-col">
-          <div style="width: 100%; max-width: 400px;">
-            <!-- 3D WebGL Viewport Container -->
-            <div class="hero-3d-viewport-box" id="viewport-3d-container">
+          <div style="width: 100%; max-width: 380px;">
+            <div class="hero-portrait-card">
+              <div class="hero-portrait-img-box">
+                <picture>
+                  <source srcset="./Profile.webp" type="image/webp" />
+                  <source srcset="./Profile.png" type="image/png" />
+                  <img src="./Profile.png" alt="Portrait of Rudra Sarker" loading="eager" />
+                </picture>
+              </div>
+              <div class="portrait-caption">
+                <div>
+                  <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--text-white); margin-bottom: 2px;">Rudra Sarker</h4>
+                  <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Industrial &amp; Production Engineering</p>
+                </div>
+                <span class="loc-tag">SUST, Sylhet</span>
+              </div>
+            </div>
+
+            <!-- Interactive 3D Model Viewport Toggle -->
+            <div style="margin-top: 0.85rem;">
+              <button type="button" id="btn-toggle-3d" class="btn-secondary-dark" onclick="toggle3DLab()" style="font-size: 0.82rem; padding: 0.5rem 1rem; width: 100%; justify-content: center;">
+                <i class="fas fa-cube" aria-hidden="true"></i> <span id="label-toggle-3d">Interactive 3D Quantum Lab</span>
+              </button>
+            </div>
+
+            <div class="hero-3d-viewport-box" id="viewport-3d-container" style="display: none; margin-top: 0.85rem;">
               <div class="viewport-topbar">
                 <div class="viewport-status">
                   <span class="live-dot"></span>
@@ -214,33 +237,6 @@
                   <i class="fas fa-cubes" aria-hidden="true"></i> Lattice
                 </button>
               </div>
-            </div>
-
-            <!-- Portrait Frame (Toggleable) -->
-            <div class="portrait-frame" id="viewport-portrait-container" style="display: none; width: 100%;">
-              <div class="portrait-img-box">
-                <picture>
-                  <source srcset="./Profile.webp" type="image/webp" />
-                  <img src="./Profile.png" alt="Rudra Sarker" loading="eager" />
-                </picture>
-              </div>
-              <div class="portrait-caption">
-                <div>
-                  <h4>Rudra Sarker</h4>
-                  <p>Shahjalal Univ. of Science &amp; Technology</p>
-                </div>
-                <span class="loc-tag">Sylhet, BD</span>
-              </div>
-            </div>
-
-            <!-- View Switcher -->
-            <div class="hero-view-switch">
-              <button type="button" id="btn-show-3d" class="v-switch-btn active" onclick="toggleHeroView('3d')">
-                <i class="fas fa-cube" aria-hidden="true"></i> 3D Interactive Model
-              </button>
-              <button type="button" id="btn-show-portrait" class="v-switch-btn" onclick="toggleHeroView('portrait')">
-                <i class="fas fa-user" aria-hidden="true"></i> Portrait Photo
-              </button>
             </div>
           </div>
         </div>
@@ -335,6 +331,9 @@
           <!-- 1. Team SignTalk -->
           <article class="work-card" data-cat="robotics assistive">
             <div>
+              <div class="project-card-media">
+                <img src="./project1.gif" alt="Team SignTalk Smart Glove Hardware Demo" loading="lazy" />
+              </div>
               <div class="work-card-header">
                 <span class="work-category-tag">Robotics · Rice360 Semifinalist</span>
                 <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">2025 – 2026</span>
@@ -364,6 +363,9 @@
           <!-- 2. SightlineAI -->
           <article class="work-card" data-cat="ai assistive">
             <div>
+              <div class="project-card-media">
+                <img src="./project3.gif" alt="SightlineAI Smart Glasses Prototype" loading="lazy" />
+              </div>
               <div class="work-card-header">
                 <span class="work-category-tag">AI · Assistive Vision</span>
                 <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">2025</span>
@@ -787,24 +789,18 @@
   <script defer src="./main.js"></script>
 
   <!-- View Toggle Script -->
+    <!-- 3D Lab Toggle Script -->
   <script>
-    function toggleHeroView(view) {
+    function toggle3DLab() {
       const box3d = document.getElementById("viewport-3d-container");
-      const boxPortrait = document.getElementById("viewport-portrait-container");
-      const btn3d = document.getElementById("btn-show-3d");
-      const btnPortrait = document.getElementById("btn-show-portrait");
-
-      if (view === "3d") {
+      const label = document.getElementById("label-toggle-3d");
+      if (box3d.style.display === "none") {
         box3d.style.display = "block";
-        boxPortrait.style.display = "none";
-        btn3d.classList.add("active");
-        btnPortrait.classList.remove("active");
+        label.textContent = "Hide 3D Quantum Lab";
         window.dispatchEvent(new Event("resize"));
       } else {
         box3d.style.display = "none";
-        boxPortrait.style.display = "block";
-        btnPortrait.classList.add("active");
-        btn3d.classList.remove("active");
+        label.textContent = "Interactive 3D Quantum Lab";
       }
     }
   </script>
