@@ -32,7 +32,9 @@
       antialias: true
     });
     labRenderer.setPixelRatio(dpr);
-    labRenderer.setSize(width, height);
+    labRenderer.setSize(width, height, false);
+    labCanvas.style.width = '100%';
+    labCanvas.style.height = '100%';
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
@@ -255,34 +257,17 @@
 
     function resizeLab() {
       if (!container) return;
-      width = container.clientWidth || 400;
-      height = container.clientHeight || 310;
+      const rect = container.getBoundingClientRect();
+      width = rect.width || container.clientWidth || 320;
+      height = rect.height || container.clientHeight || 280;
+      if (width <= 0) width = 320;
+      if (height <= 0) height = 280;
       labCamera.aspect = width / height;
       labCamera.updateProjectionMatrix();
-      labRenderer.setSize(width, height);
+      labRenderer.setSize(width, height, false);
     }
     window.addEventListener('resize', resizeLab);
   }
 
-  // Tactile 3D Tilt
-  if (!isMobile) {
-    const tiltCards = document.querySelectorAll('.work-card, .publication-hero-card, .domain-box, .portrait-frame, .detail-card');
-    tiltCards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -4;
-        const rotateY = ((x - centerX) / centerX) * 4;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-      });
-    });
-  }
+// JS Tilt removed for zero-overlap rendering
 })();
