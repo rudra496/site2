@@ -180,35 +180,42 @@
           </div>
         </div>
 
-        <!-- Right Column: Prominent Portrait Photo of Rudra Sarker + 3D Lab Toggle -->
+        <!-- Right Column: Institutional Dual-View Card (Portrait & 3D Lab) -->
         <div class="hero-portrait-col">
-          <div style="width: 100%; max-width: 380px;">
-            <div class="hero-portrait-card">
-              <div class="hero-portrait-img-box">
-                <picture>
-                  <source srcset="./Profile.jpg" type="image/jpeg" />
-                  <source srcset="./Profile.webp" type="image/webp" />
-                  <source srcset="./Profile.png" type="image/png" />
-                  <img src="./Profile.jpg" alt="Portrait of Rudra Sarker" loading="eager" />
-                </picture>
-              </div>
-              <div class="portrait-caption">
-                <div>
-                  <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--text-white); margin-bottom: 2px;">Rudra Sarker</h4>
-                  <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Industrial &amp; Production Engineering</p>
-                </div>
-                <span class="loc-tag">SUST, Sylhet</span>
-              </div>
-            </div>
-
-            <!-- Interactive 3D Model Viewport Toggle -->
-            <div style="margin-top: 0.85rem;">
-              <button type="button" id="btn-toggle-3d" class="btn-secondary-dark" onclick="toggle3DLab()" style="font-size: 0.82rem; padding: 0.5rem 1rem; width: 100%; justify-content: center;">
-                <i class="fas fa-cube" aria-hidden="true"></i> <span id="label-toggle-3d">Interactive 3D Quantum Lab</span>
+          <div class="hero-dual-card">
+            <!-- Segmented Top Controls -->
+            <div class="hero-tab-header">
+              <button type="button" id="hero-tab-portrait" class="hero-tab-btn active" onclick="switchHeroTab('portrait')" aria-label="Show Executive Profile">
+                <i class="fas fa-user-tie" aria-hidden="true"></i> Executive Profile
+              </button>
+              <button type="button" id="hero-tab-3d" class="hero-tab-btn" onclick="switchHeroTab('3d')" aria-label="Show 3D Quantum Lab">
+                <i class="fas fa-cube" aria-hidden="true"></i> 3D Quantum Lab
               </button>
             </div>
 
-            <div class="hero-3d-viewport-box" id="viewport-3d-container" style="display: none; margin-top: 0.85rem;">
+            <!-- Panel 1: Executive Portrait -->
+            <div id="hero-view-portrait" class="hero-tab-panel active">
+              <div class="portrait-panel-wrap">
+                <div class="portrait-img-box">
+                  <picture>
+                    <source srcset="./Profile.jpg" type="image/jpeg" />
+                    <source srcset="./Profile.webp" type="image/webp" />
+                    <source srcset="./Profile.png" type="image/png" />
+                    <img src="./Profile.jpg" alt="Portrait of Rudra Sarker" loading="eager" />
+                  </picture>
+                </div>
+                <div class="portrait-meta-row">
+                  <div class="portrait-meta-info">
+                    <h4>Rudra Sarker</h4>
+                    <p>Industrial &amp; Production Engineering</p>
+                  </div>
+                  <span class="loc-pill">SUST, Sylhet</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Interactive 3D Quantum Viewport -->
+            <div id="hero-view-3d" class="hero-tab-panel">
               <div class="viewport-topbar">
                 <div class="viewport-status">
                   <span class="live-dot"></span>
@@ -223,16 +230,16 @@
               <div class="canvas-wrap">
                 <canvas id="interactive-3d-canvas"></canvas>
                 <div class="canvas-hint">
-                  <i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i> Drag to inspect
+                  <i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i> Drag to rotate
                 </div>
               </div>
 
               <div class="viewport-bottom-bar">
                 <button type="button" onclick="switch3DShape('core')" class="shape-btn active" data-shape="core">
-                  <i class="fas fa-atom" aria-hidden="true"></i> Neural Core
+                  <i class="fas fa-atom" aria-hidden="true"></i> Core
                 </button>
                 <button type="button" onclick="switch3DShape('torus')" class="shape-btn" data-shape="torus">
-                  <i class="fas fa-ring" aria-hidden="true"></i> Torus Knot
+                  <i class="fas fa-ring" aria-hidden="true"></i> Torus
                 </button>
                 <button type="button" onclick="switch3DShape('lattice')" class="shape-btn" data-shape="lattice">
                   <i class="fas fa-cubes" aria-hidden="true"></i> Lattice
