@@ -12,9 +12,14 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - run: |
-          git remote add backup https://rudra496:${{ secrets.MIRROR_TOKEN }}@github.com/rudrasarker125/${{ github.event.repository.name }}.git
-          git push backup --mirror --force
+          if [ -n "${{ secrets.MIRROR_TOKEN }}" ]; then
+            git remote add backup https://rudra496:${{ secrets.MIRROR_TOKEN }}@github.com/rudrasarker125/${{ github.event.repository.name }}.git 2>/dev/null || true
+            git push backup --mirror --force || echo "Backup repository not accessible or not created yet."
+          else
+            echo "MIRROR_TOKEN not configured, skipping mirror."
+          fi
+        continue-on-error: true
